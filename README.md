@@ -6,3 +6,5 @@ Aqui vamos armazenar as documetações e partes teoricas!
 Repositório voltado para o chatbot ->
 
 Repositório voltado para a parte do log em Python e interface ->
+
+Nome do ChatBot -> Genius
