@@ -1,0 +1,46 @@
+{
+    "treinamentos": [
+        {
+            "id": "1",
+            "titulo": "Treinamento de Integração",
+            "descricao": "Treinamento de integração para novos colaboradores.",
+            "imagem": "/assets/img/1.png",
+            "video": "https://www.youtube.com/watch?v=example1",
+            "modulos": [
+                {
+                    "moduloId": "m1",
+                    "titulo": "Boas-Vindas",
+                    "descricao": "Introdução à empresa e cultura organizacional.",
+                    "imagem": "https://via.placeholder.com/150"
+                },
+                {
+                    "moduloId": "m2",
+                    "titulo": "Políticas da Empresa",
+                    "descricao": "Apresentação das políticas internas e código de conduta.",
+                    "imagem": "https://via.placeholder.com/150"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "titulo": "Treinamento de Segurança no Trabalho",
+            "descricao": "Capacitação sobre segurança no ambiente de trabalho.",
+            "imagem": "/assets/img/2.png",
+            "video": "https://www.youtube.com/watch?v=example2",
+            "modulos": [
+                {
+                    "moduloId": "m1",
+                    "titulo": "Segurança Geral",
+                    "descricao": "Princípios básicos de segurança no trabalho.",
+                    "imagem": "https://via.placeholder.com/150"
+                },
+                {
+                    "moduloId": "m2",
+                    "titulo": "Uso de EPIs",
+                    "descricao": "Treinamento sobre o uso correto de Equipamentos de Proteção Individual.",
+                    "imagem": "https://via.placeholder.com/150"
+                }
+            ]
+        }
+    ]
+}

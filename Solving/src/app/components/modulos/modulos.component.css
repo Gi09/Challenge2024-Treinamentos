@@ -1,0 +1,42 @@
+.left-panel {
+    background-color: #004085;
+    color: white;
+    height: 100vh; /* Preenche a altura total da tela */
+    padding: 20px;
+}
+
+.left-panel h3 {
+    color: #fff;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.list-group-item.active {
+    background-color: #0056b3;
+}
+
+.right-panel {
+    padding: 20px;
+}
+
+.right-panel h1 {
+    color: #000;
+}
+
+.right-panel p {
+    margin-bottom: 10px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}

@@ -1,0 +1,27 @@
+
+<body class="text-white">
+    <iframe title="Análise de Desempenho - Log dos Treinamentos" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODU2M2JmYzctMDk2Yi00ODA3LWI2NjktZTcxNGFkMGVkYmE2IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+    <main class="container text-center">
+        <h1>Olá, Beatriz</h1>
+        <h2 class="mb-5">Seja bem-vindo ao Train!ng</h2>
+        <section>
+            <div class="container">
+                <h3 class="text-center text-white">Meus treinamentos</h3>
+                <div class="d-flex flex-wrap justify-between">
+                    <ng-container *ngFor="let item of treinamentos; let i = index;">
+                        <div class="col-6 col-md-4 mb-4 card-clickable p-2">
+                            <a href="treinamentos/{{item.id}}" class="text-decoration-none">
+                                <div class="card bg-warning text-center">
+                                    <img src="{{item.imagem}}" width="300" height="300" class="card-img-top" alt="Treinamento {{i + 1}}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.titulo}}</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

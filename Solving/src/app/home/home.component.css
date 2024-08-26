@@ -1,0 +1,38 @@
+body {
+    background-color: #004085; /* Cor de fundo azul */
+}
+
+h1, h2, h3 {
+    color: #fff; /* Cor do texto branca */
+}
+
+.card {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.image-card{
+    border-radius: 30px;
+}
+
+.card-clickable {
+    transition: transform 0.2s ease;
+}
+
+.card-clickable:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #000; /* Cor do título dentro do card */
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
