@@ -7,12 +7,15 @@ h1, h2, h3 {
 }
 
 .card {
-    border-radius: 30px;
-    overflow: hidden;
+    border-radius: 20px; /* Ajuste o valor para mais ou menos arredondamento */
+    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas do card */
 }
 
-.image-card{
-    border-radius: 30px;
+.card-img-top {
+    border-radius: 20px; /* Mesma borda arredondada que o card */
+    object-fit: cover; /* Faz com que a imagem cubra o espaço disponível sem distorcer */
+    width: 100%; /* Garante que a imagem ocupe toda a largura do card */
+    height: 200px; /* Define uma altura para que a imagem se ajuste bem */
 }
 
 .card-clickable {

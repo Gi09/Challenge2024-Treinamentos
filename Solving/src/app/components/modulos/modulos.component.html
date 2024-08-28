@@ -1,56 +1,55 @@
 <div class="container-fluid">
-    <div class="row">
-      <!-- Painel Esquerdo -->
-      <div class="col-md-3 left-panel">
-        <!-- Botões de Navegação -->
-        <div class="d-flex justify-content-between mb-4">
-          <a (click)="voltarPagina()" class="btn btn-danger flex-grow-1 me-2 text-center">
-            &larr; Voltar
-          </a>
-          <button class="btn btn-warning flex-grow-1 ms-2 text-center">Próximo</button>
-        </div>
-  
-        <!-- Lista de Módulos -->
-        <h3>Módulos</h3>
-        <ul class="list-group">
-          <li *ngFor="let modulo of treinamentoSelecionado?.modulos; let i = index"
-              [class.active]="i === moduloAtual"
-              class="list-group-item list-group-item-action"
-              (click)="selecionarModulo(i)">
-            {{ modulo.titulo }}
-          </li>
-        </ul>
-  
-        <!-- Informações do Módulo Selecionado -->
-        <div *ngIf="moduloSelecionado" class="module-info mt-3">
-          <p><strong>Possui certificação?</strong> {{ moduloSelecionado.certificacao ? 'Sim' : 'Não' }}</p>
-          <p><strong>Pré-Requisitos:</strong> {{ moduloSelecionado.preRequisitos || 'Nenhum' }}</p>
-          <p><strong>Público:</strong> {{ moduloSelecionado.publico || 'Geral' }}</p>
-          <p><strong>Obrigatório:</strong> {{ moduloSelecionado.obrigatorio ? 'Sim' : 'Não' }}</p>
-        </div>
+  <div class="row justify-content-center">
+    <!-- Painel Esquerdo -->
+    <div class="col-md-3 left-panel">
+      <!-- Botões de Navegação -->
+      <div class="d-flex justify-content-between mb-4">
+        <a (click)="voltarPagina()" class="btn btn-danger flex-grow-1 me-2 text-center">
+          &larr; Voltar
+        </a>
+        <button (click)="proximoModulo()" class="btn btn-warning flex-grow-1 ms-2 text-center">
+          Próximo &rarr;
+        </button>
       </div>
-  
-      <!-- Painel Direito -->
-      <div class="col-md-9 right-panel">
-        <h1>{{ moduloSelecionado?.titulo || 'Selecione um Módulo' }}</h1>
-        <p>{{ moduloSelecionado?.descricao || 'Descrição não disponível.' }}</p>
-  
-        <!-- Imagem do Módulo -->
-        <div *ngIf="moduloSelecionado?.imagem" class="mb-3">
-          <img [src]="moduloSelecionado?.imagem" alt="Imagem do Módulo" class="img-fluid">
-        </div>
-        <div *ngIf="!moduloSelecionado?.imagem" class="img-fluid mb-3">
-          <p>Imagem não disponível.</p>
-        </div>
-  
-        <!-- Vídeo do Módulo -->
-        <div *ngIf="moduloSelecionado?.video" class="mb-3">
-          <video [src]="moduloSelecionado?.video" controls class="w-100"></video>
-        </div>
-        <div *ngIf="!moduloSelecionado?.video" class="mb-3">
-          <p>Vídeo não disponível.</p>
-        </div>
+
+      <!-- Lista de Módulos -->
+      <h3 class="text-center">Módulos</h3>
+      <ul class="list-group">
+        <li *ngFor="let modulo of modulos; let i = index"
+            [class.active]="i === moduloAtual"
+            class="list-group-item list-group-item-action"
+            (click)="selecionarModulo(i)">
+          {{ modulo.titulo }}
+        </li>
+      </ul>
+
+      <!-- Informações do Módulo Selecionado -->
+      <div *ngIf="moduloSelecionado" class="module-info mt-3 text-center">
+        <p><strong>Possui certificação?</strong> {{ moduloSelecionado.certificacao ? 'Sim' : 'Não' }}</p>
+        <p><strong>Pré-Requisitos:</strong> {{ moduloSelecionado.preRequisitos || 'Nenhum' }}</p>
+        <p><strong>Público:</strong> {{ moduloSelecionado.publico || 'Geral' }}</p>
+        <p><strong>Obrigatório:</strong> {{ moduloSelecionado.obrigatorio ? 'Sim' : 'Não' }}</p>
+      </div>
+    </div>
+
+    <!-- Painel Direito -->
+    <div class="col-md-6 right-panel text-center">
+      <h1>{{ moduloSelecionado?.titulo || 'Selecione um Módulo' }}</h1>
+      <p>{{ moduloSelecionado?.descricao || 'Descrição não disponível.' }}</p>
+
+      <!-- Imagem do Módulo -->
+      <div *ngIf="moduloSelecionado?.imagem" class="mb-3">
+        <img [src]="moduloSelecionado?.imagem" alt="Imagem do Módulo" class="img-fluid shadow rounded">
+      </div>
+
+      <!-- Vídeo do Módulo -->
+       
+      <div *ngIf="moduloSelecionado?.video" class="mb-3">
+        <video controls class="w-100 shadow rounded">
+          <source [src]="moduloSelecionado?.video" type="video/mp4">
+          Seu navegador não suporta o elemento de vídeo.
+        </video>
       </div>
     </div>
   </div>
-  
+</div>
