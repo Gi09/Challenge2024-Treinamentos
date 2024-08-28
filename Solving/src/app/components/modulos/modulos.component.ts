@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 import { Treinamentos } from '../../interfaces/treinamentos';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -15,18 +15,19 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './modulos.component.html',
   styleUrl: './modulos.component.css'
 })
-export class ModulosComponent {
+export class ModulosComponent implements OnInit {
   treinamentoSelecionado?: Treinamentos;
   moduloSelecionado?: Modulos;
   moduloForm: FormGroup;
-  moduloAtual = 0
-
+  moduloAtual = 0;
+  videoUrl?: SafeResourceUrl;
+  
   constructor(
     private route: ActivatedRoute,
     private treinamentoService: TreinamentosService,
     private formBuilder: FormBuilder,
-    private location: Location,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     this.moduloForm = this.formBuilder.group({
       titulo: [''],
@@ -39,11 +40,11 @@ export class ModulosComponent {
       obrigatorio: [false],
     });
   }
-
+  
   ngOnInit(): void {
     this.getTreinamentoEModuloById();
   }
-
+  
   getTreinamentoEModuloById(): void {
     const treinamentoId = this.route.snapshot.paramMap.get('id') ?? '';
     const moduloId = this.route.snapshot.queryParamMap.get('moduloId');
@@ -60,39 +61,48 @@ export class ModulosComponent {
         this.selecionarModulo(0); // Seleciona o primeiro módulo por padrão
       }
   
-     if (this.moduloSelecionado) {
-          this.moduloForm.patchValue({
-            titulo: this.moduloSelecionado.titulo,
-            descricao: this.moduloSelecionado.descricao,
-            imagem: this.moduloSelecionado.imagem,
-            video: this.moduloSelecionado.video,
-            certificacao: this.moduloSelecionado.certificacao,
-            preRequisitos: this.moduloSelecionado.preRequisitos,
-            publico: this.moduloSelecionado.publico,
-            obrigatorio: this.moduloSelecionado.obrigatorio,
-          });
+      if (this.moduloSelecionado) {
+        this.moduloForm.patchValue({
+          titulo: this.moduloSelecionado.titulo,
+          descricao: this.moduloSelecionado.descricao,
+          imagem: this.moduloSelecionado.imagem,
+          video: this.moduloSelecionado.video,
+          certificacao: this.moduloSelecionado.certificacao,
+          preRequisitos: this.moduloSelecionado.preRequisitos,
+          publico: this.moduloSelecionado.publico,
+          obrigatorio: this.moduloSelecionado.obrigatorio,
+        });
+  
+        // Verifica se há uma URL de vídeo e sanitiza a URL do vídeo
+        if (this.moduloSelecionado.video) {
+          this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getYouTubeEmbedUrl(this.moduloSelecionado.video));
+        } else {
+          this.videoUrl = undefined; // Limpa a URL do vídeo se não houver
         }
-    
+      }
   
     }, error => {
       console.error('Erro ao buscar o módulo:', error);
     });
   }
   
-  
-
   selecionarModulo(index: number): void {
     this.moduloAtual = index;
     this.moduloSelecionado = this.treinamentoSelecionado?.modulos[index];
-  
-    // Atualize a URL para refletir o módulo selecionado
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { moduloId: this.moduloSelecionado?.moduloId },
-      queryParamsHandling: 'merge', // preserva outros parâmetros na URL
+      queryParamsHandling: 'merge',
     });
+  
+    // Atualiza a URL do vídeo ao selecionar um novo módulo
+    if (this.moduloSelecionado && this.moduloSelecionado.video) {
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getYouTubeEmbedUrl(this.moduloSelecionado.video));
+    } else {
+      this.videoUrl = undefined;
+    }
   }
-
+  
   proximoModulo(): void {
     if (this.treinamentoSelecionado && this.moduloAtual < this.treinamentoSelecionado.modulos.length - 1) {
       this.selecionarModulo(this.moduloAtual + 1);
@@ -100,8 +110,12 @@ export class ModulosComponent {
   }
   
   voltarPagina(): void {
-    this.location.back();
+    this.router.navigate(['..'], { relativeTo: this.route });
   }
   
-  
+  private getYouTubeEmbedUrl(videoUrl: string): string {
+    // Extrair o ID do vídeo da URL
+    const videoId = videoUrl.split('v=')[1]?.split('&')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
 }
