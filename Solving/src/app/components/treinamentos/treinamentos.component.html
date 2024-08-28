@@ -19,8 +19,8 @@
                         Módulos
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li *ngFor="let modulo of treinamentoSelecionado?.modulos">
-                            <a [routerLink]="['/treinamentos', treinamentoSelecionado?.id, 'modulos', modulo.moduloId]"
+                        <li *ngFor="let modulo of treinamentoSelecionado?.modulos; index as i">
+                            <a [routerLink]="['/treinamentos', treinamentoSelecionado?.id, 'modulos', i]"
                                 class="dropdown-item">
                                 {{ modulo.titulo }}
                             </a>

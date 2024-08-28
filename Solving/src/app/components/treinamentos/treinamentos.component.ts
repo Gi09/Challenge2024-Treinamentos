@@ -36,6 +36,7 @@ export class TreinamentosComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') ?? '';
 
     this.treinamentoService.getById(this.id).subscribe(treinamentoResponse => {
+      debugger;
       this.treinamentoSelecionado = treinamentoResponse;
 
       // Seleciona o primeiro módulo como padrão

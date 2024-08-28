@@ -8,32 +8,39 @@
             "video": "https://www.youtube.com/watch?v=example1",
             "modulos": [
                 {
+                    "moduloId": "1",
                     "titulo": "Introdução à Eurofarma",
                     "descricao": "A Eurofarma é uma empresa farmacêutica brasileira...",
                     "certificacao": true,
                     "preRequisitos": "Nenhum",
                     "publico": "Funcionários e parceiros",
                     "obrigatorio": true,
-                    "imagem": "/assets/img/5.png"
+                    "imagem": "/assets/img/5.png",
+                       "video": "https://www.youtube.com/watch?v=kD35T27sytI&list=PPSV"
+                    
                 },
                 {
+                    "moduloId": "2",
                     "titulo": "Pesquisa e Desenvolvimento",
                     "descricao": "Este módulo explora as iniciativas de P&D da Eurofarma...",
                     "certificacao": true,
                     "preRequisitos": "Introdução à Eurofarma",
                     "publico": "Profissionais de P&D",
                     "obrigatorio": true,
-                    "video": "/assets/videos/introducao-erofarma.mp4"
+                    "video": "https://www.youtube.com/watch?v=kD35T27sytI&list=PPSV"
                 },
                 {
+                    "moduloId": "3",
                     "titulo": "Produção e Qualidade",
                     "descricao": "Neste módulo, exploraremos em profundidade os processos envolvidos na produção de medicamentos na Eurofarma, com um foco especial no controle de qualidade. Você aprenderá sobre as diferentes etapas do ciclo de produção, desde o desenvolvimento das fórmulas até a embalagem final dos produtos. Será abordado como a Eurofarma implementa rigorosos padrões de controle de qualidade para garantir a eficácia e segurança de seus medicamentos, cumprindo as normas internacionais de boas práticas de fabricação. O módulo também inclui uma análise das tecnologias avançadas utilizadas na produção, as metodologias de validação de processos e a importância da manutenção contínua de equipamentos para evitar contaminações e garantir a precisão dos produtos. Ao final, você terá uma compreensão abrangente dos sistemas de gestão de qualidade e das práticas operacionais que asseguram a excelência dos produtos da Eurofarma.",
                     "certificacao": true,
                     "preRequisitos": "Pesquisa e Desenvolvimento",
                     "publico": "Engenheiros e Técnicos",
-                    "obrigatorio": true
+                    "obrigatorio": true,
+                       "video": "https://www.youtube.com/watch?v=kD35T27sytI&list=PPSV"
                 },
                 {
+                    "moduloId": "4",
                     "titulo": "Marketing e Vendas",
                     "descricao": "Neste módulo, mergulharemos nas estratégias de marketing e vendas que são fundamentais para o sucesso comercial da Eurofarma. A aula começará com uma introdução aos princípios básicos de marketing, incluindo a definição de mercado-alvo, segmentação de clientes e o desenvolvimento de mensagens de marketing eficazes. Discutiremos as principais técnicas de promoção utilizadas pela Eurofarma para criar e manter uma presença de marca forte no mercado, como campanhas publicitárias, marketing digital e eventos promocionais. Além disso, abordaremos as estratégias de vendas, incluindo a gestão de equipes de vendas, técnicas de negociação e fechamento de negócios. Você aprenderá como as estratégias de marketing e vendas são integradas para maximizar a penetração de mercado e impulsionar o crescimento das receitas. O módulo também inclui estudos de caso práticos que ilustram como a Eurofarma aplica essas estratégias no mundo real, além de ferramentas e métricas usadas para medir a eficácia das campanhas e ajustar as abordagens conforme necessário. Ao final deste módulo, você terá uma compreensão abrangente das melhores práticas de marketing e vendas e como elas podem ser aplicadas para alcançar resultados excepcionais na área comercial.",
                     "certificacao": true,
@@ -43,6 +50,7 @@
                     "imagem": "/assets/img/7.png"
                 },
                 {
+                    "moduloId": "5",
                     "titulo": "Normas regulamentadoras",
                     "descricao": "Normas regulamentadoras existentes e suas principais caracteristicas",
                     "certificacao": true,
@@ -61,13 +69,13 @@
             "video": "https://www.youtube.com/watch?v=example2",
             "modulos": [
                 {
-                    "moduloId": "tchau",
+                    "moduloId": "6",
                     "titulo": "Segurança Geral",
                     "descricao": "Princípios básicos de segurança no trabalho.",
                     "imagem": "https://via.placeholder.com/150"
                 },
                 {
-                    "moduloId": "sim",
+                    "moduloId": "7",
                     "titulo": "Uso de EPIs",
                     "descricao": "Treinamento sobre o uso correto de Equipamentos de Proteção Individual.",
                     "imagem": "https://via.placeholder.com/150"
@@ -82,19 +90,19 @@
             "video": "https://www.youtube.com/watch?v=example1",
             "modulos": [
                 {
-                    "moduloId": "oi",
+                    "moduloId": "8",
                     "titulo": "Boas-Vindas",
                     "descricao": "Introdução à empresa e cultura organizacional.",
                     "imagem": "https://via.placeholder.com/150"
                 },
                 {
-                    "moduloId": "ola",
+                    "moduloId": "9",
                     "titulo": "Políticas da Empresa",
                     "descricao": "Apresentação das políticas internas e código de conduta.",
                     "imagem": "https://via.placeholder.com/150"
                 },
                 {
-                    "moduloId": "tesla",
+                    "moduloId": "10",
                     "titulo": "Políticas da sei la",
                     "descricao": "Apresentação das políticas internas e código de conduta.",
                     "imagem": "https://via.placeholder.com/150"
