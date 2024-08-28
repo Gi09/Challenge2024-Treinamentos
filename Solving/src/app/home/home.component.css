@@ -1,41 +1,97 @@
+/* Reset básico */
+body, html, div, h1, h2, p, img, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
 body {
-    background-color: #004085; /* Cor de fundo azul */
+    font-family: Arial, sans-serif;
+    background-color: rgb(0, 72, 142);
+    background-size: cover;       
+    background-repeat: no-repeat; 
+    background-position: center;  
+    height: 100%;               
+    margin: 0;  
+    padding: 20px;
 }
 
-h1, h2, h3 {
-    color: #fff; /* Cor do texto branca */
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.card {
-    border-radius: 20px; /* Ajuste o valor para mais ou menos arredondamento */
-    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas do card */
+/* Cabeçalho */
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #0082CB;
+    color: #FFFFFF;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100%;
 }
 
-.card-img-top {
-    border-radius: 20px; /* Mesma borda arredondada que o card */
-    object-fit: cover; /* Faz com que a imagem cubra o espaço disponível sem distorcer */
-    width: 100%; /* Garante que a imagem ocupe toda a largura do card */
-    height: 200px; /* Define uma altura para que a imagem se ajuste bem */
+.header h1 {
+    font-size: 2em;
+    color: #FFFFFF;
 }
 
-.card-clickable {
-    transition: transform 0.2s ease;
+/* Seção Todos os Cursos */
+.todos-cursos h2 {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 20px;
 }
 
-.card-clickable:hover {
-    transform: scale(1.05);
+/* Configuração Flexbox para os contêineres */
+.todos-cursos-container {
+    display: flex;           
+    flex-wrap: wrap;        
+    gap: 30px;              
+    justify-content: center; 
+}
+
+.curso-card {
+    width: 250px;          
+    border-radius: 20px;   
+    overflow: hidden;      
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: flex-start; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.419); 
+    background-color: #fff; 
+}
+
+.curso-card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.curso-card img {
+    width: 100%;             
+    height: auto;            
+    aspect-ratio: 4 / 3;     
+    object-fit: cover;       
+    border-radius: 20px 20px 0 0;
+    display: block;          /* Remove o gap em cima */
+}
+
+
+.card-body {
+    text-align: center;     
+    padding: 10px;          
+    background-color: #fff; 
+    width: 100%;            /* Garante que a largura do card-body é igual à do curso-card */
 }
 
 .card-title {
-    font-weight: bold;
-    color: #000; /* Cor do título dentro do card */
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
+    font-size: 1.2em;       
+    color: #333;            
+    margin: 4;              /* Remove margens extras */
 }
