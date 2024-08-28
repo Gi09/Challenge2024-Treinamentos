@@ -3,7 +3,7 @@ body {
 }
 
 header {
-    background-color: #004085; /* Azul escuro */
+    background-color: rgb(0, 72, 142);; /* Azul escuro */
     color: white;
     padding: 10px 20px;
 }
@@ -25,7 +25,7 @@ main {
 }
 
 .bg-primary {
-    background-color: #004085 !important; /* Azul escuro */
+    background-color: rgb(0, 72, 142) !important; /* Azul escuro */
 }
 
 .bg-warning {
