@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat da Plataforma de Cursos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #chat-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 400px;
+            max-width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chat-box {
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            flex-grow: 1;
+            background-color: #ffffe0; /* Amarelo bem clarinho */
+        }
+
+        #user-input {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        #user-input input {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 0 0 0 10px;
+        }
+
+        #user-input button {
+            padding: 10px;
+            border: none;
+            background-color: #007BFF; /* Azul */
+            color: white;
+            cursor: pointer;
+            border-radius: 0 0 10px 0;
+        }
+
+        #user-input button:hover {
+            background-color: #0056b3; /* Azul escuro */
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #007BFF; /* Azul */
+            color: white;
+            text-align: right;
+            align-self: flex-end;
+        }
+
+        .chatbot-message {
+            background-color: #FFCC00; /* Amarelo */
+            color: black;
+            text-align: left;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <div id="user-input">
+            <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function addMessage(content, sender) {
+            const chatBox = document.getElementById("chat-box");
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", sender + "-message");
+            messageDiv.innerText = content;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById("message-input");
+            const message = inputField.value.trim();
+            if (message === "") return;
+
+            addMessage(message, "user");
+
+            fetch('http://127.0.0.1:5000/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({message: message}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                addMessage(data.response, "chatbot");
+            })
+            .catch(error => {
+                console.error('Erro ao enviar mensagem:', error);
+                addMessage("Desculpe, algo deu errado. Tente novamente mais tarde.", 'chatbot');
+            });
+
+            inputField.value = "";
+        }
+    </script>
+</body>
+</html>
