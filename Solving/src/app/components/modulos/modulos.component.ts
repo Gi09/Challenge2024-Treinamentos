@@ -102,19 +102,50 @@ export class ModulosComponent implements OnInit {
       this.videoUrl = undefined;
     }
   }
-  
+
+  // Pula para o próximo módulo
   proximoModulo(): void {
-    if (this.treinamentoSelecionado && this.moduloAtual < this.treinamentoSelecionado.modulos.length - 1) {
-      this.selecionarModulo(this.moduloAtual + 1);
+    // Verifica se o treinamento está definido e se o módulo atual não é o último
+    if (this.treinamentoSelecionado) {
+      if (this.moduloAtual < this.treinamentoSelecionado.modulos.length - 1) {
+        // Avança para o próximo módulo
+        this.selecionarModulo(this.moduloAtual + 1);
+      } else {
+        // Já estamos no último módulo, impedir a navegação
+        console.log('Você já está no último módulo.');
+      }
+    }
+  }
+  
+  // Volta ao modulo anterior 
+  voltarModulo(): void {
+    // Verifica se o treinamento está definido e se o módulo atual não é o primeiro
+    if (this.treinamentoSelecionado && this.moduloAtual > 0) {
+      // Volta para o módulo anterior
+      this.selecionarModulo(this.moduloAtual - 1);
+    } else {
+      // Já estamos no primeiro módulo, impedir a navegação
+      console.log('Você já está no primeiro módulo.');
     }
   }
 
-  voltarModulo(): void {
-    if (this.treinamentoSelecionado && this.moduloAtual < this.treinamentoSelecionado.modulos.length - 1) {
-      this.selecionarModulo(this.moduloAtual - 1);
+  // Verifica se o usuário está no último módulo
+  isUltimoModulo(): boolean {
+    // Verifica se o treinamento foi carregado e se há módulos
+    if (this.treinamentoSelecionado && this.treinamentoSelecionado.modulos) {
+      // Retorna true se o módulo atual for o último
+      return this.moduloAtual === this.treinamentoSelecionado.modulos.length - 1;
     }
+    return false;
   }
   
+  // Conclusão do curso
+  concluirCurso(): void {
+    // Redireciona o usuário para a página de conclusão do curso
+    this.router.navigate(['/conclusao-curso']);
+  }
+  
+  // Volta para o início
   voltarPagina(): void {
     this.router.navigate(['..'], { relativeTo: this.route });
   }
