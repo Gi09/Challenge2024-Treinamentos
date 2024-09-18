@@ -5,9 +5,10 @@
       <!-- Botões de Navegação -->
       <div class="d-flex justify-content-between mb-4">
         <a (click)="voltarPagina()" class="btn btn-danger flex-grow-1 me-2 text-center">
-          &larr; Voltar
+          &larr; Início
         </a>
-        <button class="btn btn-warning flex-grow-1 ms-2 text-center">Próximo</button>
+        <button (click)="proximoModulo()" class="btn btn-warning flex-grow-1 ms-2 text-center">Próximo</button>
+        <button (click)="voltarModulo()" class="btn btn-warning flex-grow-1 ms-2 text-center">Voltar</button>
       </div>
 
 

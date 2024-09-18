@@ -108,6 +108,12 @@ export class ModulosComponent implements OnInit {
       this.selecionarModulo(this.moduloAtual + 1);
     }
   }
+
+  voltarModulo(): void {
+    if (this.treinamentoSelecionado && this.moduloAtual < this.treinamentoSelecionado.modulos.length - 1) {
+      this.selecionarModulo(this.moduloAtual - 1);
+    }
+  }
   
   voltarPagina(): void {
     this.router.navigate(['..'], { relativeTo: this.route });
