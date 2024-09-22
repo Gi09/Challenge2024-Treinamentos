@@ -4,22 +4,21 @@
     <div class="col-md-3 left-panel">
       <!-- Botões de Navegação -->
       <div class="d-flex justify-content-between mb-4">
-        <a (click)="voltarPagina()" class="btn btn-danger flex-grow-1 me-2 text-center">
+        <a (click)="voltarPagina()" class="btn btn-primary flex-grow-1 me-2 text-center">
           &larr; Início
         </a>
-        <!-- Botão de Próximo -->
-        <button (click)="proximoModulo()" class="btn btn-warning flex-grow-1 ms-2 text-center">Próximo</button>
         <!-- Botão de Voltar -->
-        <button (click)="voltarModulo()" class="btn btn-warning flex-grow-1 ms-2 text-center">Voltar</button>
+        <button (click)="voltarModulo()" class="btn btn-danger flex-grow-1 ms-2 text-center">Voltar</button>
+        <!-- Botão de Próximo -->
+        <button (click)="proximoModulo()" class="btn btn-success flex-grow-1 ms-2 text-center">Próximo</button>
+        
       </div>
 
       <!-- Lista de Módulos -->
       <h3>Módulos</h3>
       <ul class="list-group">
-        <li *ngFor="let modulo of treinamentoSelecionado?.modulos; let i = index"
-            [class.active]="i === moduloAtual"
-            class="list-group-item list-group-item-action"
-            (click)="selecionarModulo(i)">
+        <li *ngFor="let modulo of treinamentoSelecionado?.modulos; let i = index" [class.active]="i === moduloAtual"
+          class="list-group-item list-group-item-action" (click)="selecionarModulo(i)">
           {{ modulo.titulo }}
         </li>
       </ul>
@@ -31,6 +30,12 @@
         <p><strong>Público:</strong> {{ moduloSelecionado.publico || 'Geral' }}</p>
         <p><strong>Obrigatório:</strong> {{ moduloSelecionado.obrigatorio ? 'Sim' : 'Não' }}</p>
       </div>
+
+      <!-- Botão de conclusão do curso -->
+      <button *ngIf="isUltimoModulo()" (click)="concluirCurso()" class="btn btn-primary">
+        Concluir Curso
+      </button>
+
     </div>
 
     <!-- Painel Direito -->
@@ -46,13 +51,8 @@
       <!-- Vídeo do Módulo -->
       <div *ngIf="videoUrl" class="mb-3">
         <iframe [src]="videoUrl" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
-      </div>               
+      </div>
     </div>
-
-    <!-- Botão de conclusão do curso -->
-    <button *ngIf="isUltimoModulo()" (click)="concluirCurso()" class="btn btn-primary">
-      Concluir Curso
-    </button>
 
   </div>
 </div>

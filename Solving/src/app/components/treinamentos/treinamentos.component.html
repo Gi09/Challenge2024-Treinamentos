@@ -1,36 +1,33 @@
-<body class="bg-primary text-white">
-    <main class="container-fluid d-flex justify-content-center align-items-center">
-        <div class="row w-100">
-            <div class="col-12 col-md-8 text-center bg-primary p-5">
-                <div class="text-start mb-4">
-                    <a href="#" class="btn btn-danger">
-                        &larr; Voltar
+<body class="custom-body">
+    <main class="custom-main-container">
+        <div class="custom-row">
+            <div class="custom-col-left">
+                <div class="custom-back-btn">
+                    <a href="home" class="custom-btn-danger">
+                        Voltar
                     </a>
                 </div>
-                <h1>{{treinamentoSelecionado?.titulo}}</h1>
-                <p>{{treinamentoSelecionado?.descricao}}</p>
-                <div class="my-4">
-                    <img src={{treinamentoSelecionado?.imagem}} width="600" height="600" alt="Video Placeholder" class="img-fluid">
+                <h1 class="custom-title">{{treinamentoSelecionado?.titulo}}</h1>
+                <p class="custom-description">{{treinamentoSelecionado?.descricao}}</p>
+                <div class="custom-image-container">
+                    <img src={{treinamentoSelecionado?.imagem}} width="600" height="600" alt="Video Placeholder" class="custom-image">
                 </div>
 
-                <div class="dropdown">
-                    <button class="btn btn-warning" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                <div class="custom-dropdown">
+                    <button class="custom-btn-warning" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         Módulos
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ul class="custom-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li *ngFor="let modulo of treinamentoSelecionado?.modulos; index as i">
-                            <a [routerLink]="['/treinamentos', treinamentoSelecionado?.id, 'modulos', i]"
-                                class="dropdown-item">
+                            <a [routerLink]="['/treinamentos', treinamentoSelecionado?.id, 'modulos', i]" class="dropdown-item">
                                 {{ modulo.titulo }}
                             </a>
                         </li>
                     </ul>
                 </div>
-
-
             </div>
-            <div class="col-12 col-md-4 bg-warning p-5 text-dark">
+
+            <div class="custom-col-right">
                 <p><strong>Carga horária:</strong> 7h</p>
                 <p><strong>Módulos:</strong> 5</p>
                 <p><strong>Possui certificação?</strong> Sim</p>
